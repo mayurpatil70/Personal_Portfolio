@@ -71,17 +71,42 @@ function saveFloatingChatConvos(convos: FloatingChatConversation[]) {
 }
 
 // API functions matching FloatingChat
+export const DISCORD_WEBHOOK_URL =
+  "https://discord.com/api/webhooks/1491777720269406288/h-QN9uVGn__IfMpXmhwmJwAl4B4M1vkK5ZC6DEIofHXmSJ-IRNB6Kjud2dsOu_LMkBC2"; // ← put your actual webhook here
+
 async function postToDiscord(category: string, data: Record<string, string>) {
-  if (!WORKER_URL) return;
+  if (!DISCORD_WEBHOOK_URL) return;
+
   try {
-    const res = await fetch(`${WORKER_URL}/discord`, {
+    const res = await fetch(DISCORD_WEBHOOK_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ category, data }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // Optional: customize how it appears in Discord
+        username: "Portfolio Tracker",
+        content: `New ${category} event from your portfolio site`,
+        embeds: [
+          {
+            title: `Category: ${category}`,
+            fields: Object.entries(data).map(([key, value]) => ({
+              name: key,
+              value: value || "–",
+              inline: false,
+            })),
+            color: 3447003, // optional color (hex as an integer)
+          },
+        ],
+      }),
     });
-    if (!res.ok) console.warn("Discord post failed");
+
+    if (!res.ok) {
+      const text = await res.text();
+      console.warn("Discord webhook failed:", res.status, text);
+    }
   } catch (error) {
-    console.error("Error posting to Discord:", error);
+    console.error("Error posting to Discord webhook:", error);
   }
 }
 
