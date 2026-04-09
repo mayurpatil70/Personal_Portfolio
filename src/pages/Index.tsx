@@ -7,14 +7,13 @@ import { Contact } from "@/components/portfolio/Contact";
 import { FloatingChat } from "@/components/portfolio/FloatingChat";
 import { ClientNotifications } from "@/components/portfolio/ClientNotifications";
 import { Navbar } from "@/components/portfolio/Navbar";
-import { SpaceBackground } from "@/components/portfolio/SpaceBackground";
+
 import { motion } from "framer-motion";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      <SpaceBackground />
-      <div className="relative z-10">
+      <div className="relative z-10 bg-gradient-to-br from-slate-900 via-indigo-900/50 to-slate-950 min-h-screen">
         <Navbar />
         <section id="hero">
           <Hero />
@@ -27,7 +26,9 @@ const Index = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
             className="h-px bg-gradient-to-r from-transparent via-theme-primary to-transparent"
-            style={{ background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)` }}
+            style={{
+              background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)`,
+            }}
           />
         </div>
         <section id="skills">
@@ -40,7 +41,9 @@ const Index = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
             className="h-px"
-            style={{ background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)` }}
+            style={{
+              background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)`,
+            }}
           />
         </div>
         <section id="experience">
@@ -53,7 +56,9 @@ const Index = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
             className="h-px"
-            style={{ background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)` }}
+            style={{
+              background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)`,
+            }}
           />
         </div>
         <section id="projects">
@@ -66,7 +71,9 @@ const Index = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
             className="h-px"
-            style={{ background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)` }}
+            style={{
+              background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)`,
+            }}
           />
         </div>
         <section id="education">
@@ -79,7 +86,9 @@ const Index = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
             className="h-px"
-            style={{ background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)` }}
+            style={{
+              background: `linear-gradient(to right, transparent, hsl(var(--theme-primary)), transparent)`,
+            }}
           />
         </div>
         <section id="contact">

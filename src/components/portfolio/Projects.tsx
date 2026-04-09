@@ -44,15 +44,13 @@ export const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className={`w-full object-contain backdrop-blur-sm ${
-                      index <= 1 ? "opacity-80 hover:opacity-95" : ""
-                    } transition-opacity duration-300`}
+                    className="w-full h-64 md:h-80 object-contain opacity-100 hover:brightness-110 transition-all duration-300"
                   />
                   <div
                     className={`absolute inset-0 ${
                       index <= 1
                         ? "bg-gradient-to-t from-theme-primary/30 via-theme-secondary/10 to-transparent"
-                        : "bg-gradient-to-t from-card via-transparent to-transparent opacity-60"
+                        : "bg-gradient-to-t from-card/80 via-transparent to-transparent"
                     }`}
                   />
                   <div

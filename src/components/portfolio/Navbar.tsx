@@ -273,11 +273,18 @@ export const Navbar = () => {
   const handleNavClick = (href: string, id: string) => {
     setIsOpen(false);
     setActiveSection(id);
-    // Smooth scroll to section using the id parameter
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    // Reliable smooth scroll with navbar offset
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const navbarHeight = 90; // Adjusted for sticky navbar + padding
+        const y =
+          element.getBoundingClientRect().top +
+          window.pageYOffset -
+          navbarHeight;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 300); // Delay for menu close animation
   };
 
   return (
