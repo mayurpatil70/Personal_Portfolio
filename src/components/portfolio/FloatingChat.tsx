@@ -211,7 +211,9 @@ function loadConvos(): Conversation[] {
 function saveConvos(convos: Conversation[]) {
   try {
     localStorage.setItem(LS_CONVOS, JSON.stringify(convos));
-  } catch {}
+  } catch (error) {
+    console.error("Error saving conversations:", error);
+  }
 }
 function getRLSecsRemaining(): number {
   try {
@@ -220,14 +222,17 @@ function getRLSecsRemaining(): number {
     return elapsed >= RATE_LIMIT_MS
       ? 0
       : Math.ceil((RATE_LIMIT_MS - elapsed) / 1000);
-  } catch {
+  } catch (error) {
+    console.error("Error getting rate limit:", error);
     return 0;
   }
 }
 function stampRL() {
   try {
     localStorage.setItem(LS_RL, Date.now().toString());
-  } catch {}
+  } catch (error) {
+    console.error("Error stamping rate limit:", error);
+  }
 }
 
 // ── Misc helpers ──────────────────────────────────────────────────────────────

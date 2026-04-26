@@ -4,7 +4,16 @@ import { Sun, Moon, Palette, ChevronDown, Zap } from "lucide-react";
 import { useState } from "react";
 
 export const ThemeToggle = () => {
-  const { theme, toggleTheme, colorTheme, setColorTheme, isAutoCycling, setAutoCycling, autoCyclingDuration, setAutoCyclingDuration } = useTheme();
+  const {
+    theme,
+    toggleTheme,
+    colorTheme,
+    setColorTheme,
+    isAutoCycling,
+    setAutoCycling,
+    autoCyclingDuration,
+    setAutoCyclingDuration,
+  } = useTheme();
   const [showPalette, setShowPalette] = useState(false);
   const [showAllThemes, setShowAllThemes] = useState(false);
 
@@ -13,7 +22,7 @@ export const ThemeToggle = () => {
   const shouldShowMoreButton = colorThemes.length > 5;
 
   const handleSelectTheme = (themeName: string) => {
-    setColorTheme(themeName as any);
+    setColorTheme(themeName as typeof colorTheme);
     setShowPalette(false);
     setShowAllThemes(false);
   };
@@ -49,7 +58,9 @@ export const ThemeToggle = () => {
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <Zap className="h-4 w-4 text-theme-primary" />
-                  <span className="text-xs font-semibold text-foreground">Auto Theme</span>
+                  <span className="text-xs font-semibold text-foreground">
+                    Auto Theme
+                  </span>
                 </div>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
@@ -70,7 +81,9 @@ export const ThemeToggle = () => {
               {/* Duration slider - only show when auto-cycling is enabled */}
               {isAutoCycling && (
                 <div className="mt-3 space-y-2">
-                  <label className="text-xs font-medium text-muted-foreground">Speed</label>
+                  <label className="text-xs font-medium text-muted-foreground">
+                    Speed
+                  </label>
                   <div className="space-y-2">
                     {durations.map((duration) => (
                       <button
@@ -98,7 +111,9 @@ export const ThemeToggle = () => {
                 key={t.name}
                 onClick={() => handleSelectTheme(t.name)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                  colorTheme === t.name ? "bg-accent text-foreground" : "text-muted-foreground hover:bg-accent/50"
+                  colorTheme === t.name
+                    ? "bg-accent text-foreground"
+                    : "text-muted-foreground hover:bg-accent/50"
                 }`}
               >
                 <span className={`w-4 h-4 rounded-full ${t.color}`} />
@@ -114,7 +129,9 @@ export const ThemeToggle = () => {
                   className="flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent/50 transition-colors"
                 >
                   {showAllThemes ? "Show less" : "Show more"}
-                  <ChevronDown className={`h-4 w-4 transition-transform ${showAllThemes ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${showAllThemes ? "rotate-180" : ""}`}
+                  />
                 </button>
 
                 {/* Hidden themes */}
@@ -126,7 +143,9 @@ export const ThemeToggle = () => {
                         key={t.name}
                         onClick={() => handleSelectTheme(t.name)}
                         className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                          colorTheme === t.name ? "bg-accent text-foreground" : "text-muted-foreground hover:bg-accent/50"
+                          colorTheme === t.name
+                            ? "bg-accent text-foreground"
+                            : "text-muted-foreground hover:bg-accent/50"
                         }`}
                       >
                         <span className={`w-4 h-4 rounded-full ${t.color}`} />
@@ -149,7 +168,11 @@ export const ThemeToggle = () => {
         className="w-10 h-10 rounded-full bg-card border shadow-lg flex items-center justify-center text-foreground hover:bg-accent transition-colors"
         aria-label="Toggle dark mode"
       >
-        {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+        {theme === "dark" ? (
+          <Sun className="h-5 w-5" />
+        ) : (
+          <Moon className="h-5 w-5" />
+        )}
       </motion.button>
     </div>
   );

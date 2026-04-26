@@ -5,7 +5,6 @@ import { Projects } from "@/components/portfolio/Projects";
 import { Education } from "@/components/portfolio/Education";
 import { Contact } from "@/components/portfolio/Contact";
 import { FloatingChat } from "@/components/portfolio/FloatingChat";
-import { ClientNotifications } from "@/components/portfolio/ClientNotifications";
 import { Navbar } from "@/components/portfolio/Navbar";
 
 import { motion } from "framer-motion";
@@ -104,7 +103,6 @@ const Index = () => {
       </div>
 
       <FloatingChat />
-      <ClientNotifications />
     </div>
   );
 };

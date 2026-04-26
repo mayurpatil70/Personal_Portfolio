@@ -115,7 +115,7 @@ export const Hero = () => {
                   <div className="flex items-center gap-2 bg-theme-primary/10 px-3 py-1 rounded-full border border-theme-primary/30">
                     <Code className="h-4 w-4 text-theme-primary" />
                     <span className="text-sm font-medium text-theme-primary">
-                      1+ years Experience
+                      1.4+ years Experience
                     </span>
                   </div>
                   <div className="flex items-center gap-2 bg-theme-primary/10 px-3 py-1 rounded-full border border-theme-primary/30">

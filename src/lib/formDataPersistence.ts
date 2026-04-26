@@ -7,7 +7,6 @@
 export interface FormData {
   name?: string;
   email?: string;
-  whatsapp?: string;
   subject?: string;
   message?: string;
   [key: string]: string | undefined;
@@ -16,7 +15,7 @@ export interface FormData {
 const STORAGE_KEY = "portfolioFormData";
 
 // Fields that should be reused and remembered
-const PERSISTENT_FIELDS = ["name", "email", "whatsapp"];
+const PERSISTENT_FIELDS = ["name", "email"];
 
 /**
  * Save form data to localStorage

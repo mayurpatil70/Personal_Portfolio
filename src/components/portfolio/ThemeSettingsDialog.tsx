@@ -2,9 +2,20 @@ import { motion } from "framer-motion";
 import { useTheme, colorThemes } from "./ThemeProvider";
 import { Sun, Moon, X, Settings, Zap, Type } from "lucide-react";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
-export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+export const ThemeSettingsDialog = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const {
     theme,
     toggleTheme,
@@ -52,7 +63,7 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
   ];
 
   const handleSelectTheme = (themeName: string) => {
-    setColorTheme(themeName as any);
+    setColorTheme(themeName as typeof colorTheme);
   };
 
   return (
@@ -118,7 +129,9 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <Zap className="h-4 w-4 text-theme-primary" />
-                  <span className="font-medium text-foreground">Auto Theme</span>
+                  <span className="font-medium text-foreground">
+                    Auto Theme
+                  </span>
                 </div>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
@@ -139,7 +152,9 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
               {/* Speed control */}
               {isAutoCycling && (
                 <div className="mt-4 space-y-2">
-                  <label className="text-sm font-medium text-muted-foreground">Cycle Speed</label>
+                  <label className="text-sm font-medium text-muted-foreground">
+                    Cycle Speed
+                  </label>
                   <div className="grid grid-cols-2 gap-2">
                     {durations.map((duration) => (
                       <button
@@ -162,7 +177,9 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
             {/* Manual color selection */}
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">
-                {isAutoCycling ? "Select theme to disable auto-cycling" : "Choose your color theme"}
+                {isAutoCycling
+                  ? "Select theme to disable auto-cycling"
+                  : "Choose your color theme"}
               </p>
               <div className="grid grid-cols-5 gap-2">
                 {visibleThemes.map((t) => (
@@ -175,7 +192,9 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
                         : "border-border hover:border-theme-primary/50"
                     }`}
                   >
-                    <div className={`w-8 h-8 rounded-full mx-auto mb-2 ${t.color}`} />
+                    <div
+                      className={`w-8 h-8 rounded-full mx-auto mb-2 ${t.color}`}
+                    />
                     <span className="text-xs">{t.label}</span>
                   </button>
                 ))}
@@ -196,7 +215,9 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
                               : "border-border hover:border-theme-primary/50"
                           }`}
                         >
-                          <div className={`w-8 h-8 rounded-full mx-auto mb-2 ${t.color}`} />
+                          <div
+                            className={`w-8 h-8 rounded-full mx-auto mb-2 ${t.color}`}
+                          />
                           <span className="text-xs">{t.label}</span>
                         </button>
                       ))}
@@ -224,12 +245,16 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
 
             {/* Font Family */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-muted-foreground">Font Family</label>
+              <label className="text-sm font-medium text-muted-foreground">
+                Font Family
+              </label>
               <div className="grid grid-cols-3 gap-2">
                 {fontFamilies.map((font) => (
                   <button
                     key={font.value}
-                    onClick={() => setFontFamily(font.value as any)}
+                    onClick={() =>
+                      setFontFamily(font.value as "sans" | "serif" | "mono")
+                    }
                     className={`p-3 rounded-lg border-2 transition-all text-sm font-medium ${
                       fontFamily === font.value
                         ? "border-theme-primary bg-theme-primary/10"
@@ -245,12 +270,18 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
 
             {/* Font Weight */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-muted-foreground">Font Weight</label>
+              <label className="text-sm font-medium text-muted-foreground">
+                Font Weight
+              </label>
               <div className="grid grid-cols-3 gap-2">
                 {fontWeights.map((weight) => (
                   <button
                     key={weight.value}
-                    onClick={() => setFontWeight(weight.value as any)}
+                    onClick={() =>
+                      setFontWeight(
+                        weight.value as "normal" | "medium" | "bold",
+                      )
+                    }
                     className={`p-3 rounded-lg border-2 transition-all text-sm font-medium ${
                       fontWeight === weight.value
                         ? "border-theme-primary bg-theme-primary/10"
@@ -266,12 +297,18 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
 
             {/* Letter Spacing */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-muted-foreground">Letter Spacing</label>
+              <label className="text-sm font-medium text-muted-foreground">
+                Letter Spacing
+              </label>
               <div className="grid grid-cols-3 gap-2">
                 {letterSpacings.map((spacing) => (
                   <button
                     key={spacing.value}
-                    onClick={() => setLetterSpacing(spacing.value as any)}
+                    onClick={() =>
+                      setLetterSpacing(
+                        spacing.value as "tight" | "normal" | "wide",
+                      )
+                    }
                     className={`p-3 rounded-lg border-2 transition-all text-sm font-medium ${
                       letterSpacing === spacing.value
                         ? "border-theme-primary bg-theme-primary/10"
@@ -288,7 +325,9 @@ export const ThemeSettingsDialog = ({ isOpen, onClose }: { isOpen: boolean; onCl
           {/* Preview */}
           <div className="space-y-3 bg-accent/20 p-4 rounded-lg border border-border">
             <p className="text-xs text-muted-foreground">PREVIEW</p>
-            <p className="text-sm text-foreground">This is how your text will look with the selected settings.</p>
+            <p className="text-sm text-foreground">
+              This is how your text will look with the selected settings.
+            </p>
           </div>
         </div>
       </DialogContent>

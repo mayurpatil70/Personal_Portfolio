@@ -19,7 +19,6 @@ import {
   getSavedFormData,
   FormData,
 } from "@/lib/formDataPersistence";
-import { sendWhatsAppMessage, storeClientData } from "@/lib/whatsappService";
 
 const LS_FC_CONVOS = "fc_conversations";
 const WORKER_URL = import.meta.env.VITE_WORKER_URL;
@@ -67,7 +66,9 @@ function loadFloatingChatConvos(): FloatingChatConversation[] {
 function saveFloatingChatConvos(convos: FloatingChatConversation[]) {
   try {
     localStorage.setItem(LS_FC_CONVOS, JSON.stringify(convos));
-  } catch {}
+  } catch (error) {
+    console.error("Error saving conversations:", error);
+  }
 }
 
 // API functions matching FloatingChat
@@ -185,7 +186,6 @@ export const Contact = () => {
       const formDataRecord: Record<string, string> = {
         name: formData.name || "",
         email: formData.email || "",
-        whatsapp: formData.whatsapp || "",
         subject: formData.subject || "",
         message: formData.message || "",
       };
@@ -194,9 +194,6 @@ export const Contact = () => {
       const lines = [
         `**Name:** ${formDataRecord.name}`,
         `**Email:** ${formDataRecord.email}`,
-        ...(formDataRecord.whatsapp
-          ? [`**WhatsApp:** ${formDataRecord.whatsapp}`]
-          : []),
         ...(formDataRecord.subject
           ? [`**Subject:** ${formDataRecord.subject}`]
           : []),
@@ -231,25 +228,10 @@ export const Contact = () => {
       convos.unshift(newConversation);
       saveFloatingChatConvos(convos);
 
-      // Store client data in database and send WhatsApp message
-      const clientId = storeClientData({
-        name: formDataRecord.name,
-        email: formDataRecord.email,
-        subject: formDataRecord.subject,
-        message: formDataRecord.message,
-      });
-
-      // Fire requests in parallel (Discord alert + Thank You message + WhatsApp)
+      // Fire requests in parallel (Discord alert + Thank You message)
       const [, tyResult] = await Promise.allSettled([
         postToDiscord("contact", formDataRecord),
         fetchThankYou("contact", formDataRecord),
-        sendWhatsAppMessage({
-          name: formDataRecord.name,
-          email: formDataRecord.email,
-          subject: formDataRecord.subject,
-          message: formDataRecord.message,
-          id: clientId,
-        }),
       ]);
 
       const thankYouMsg =
@@ -273,7 +255,7 @@ export const Contact = () => {
       }
 
       setSubmitStatus("success");
-      // Reset form but keep name, email and whatsapp
+      // Reset form but keep name and email
       setFormData((prev) => ({
         ...prev,
         subject: "",
@@ -450,28 +432,6 @@ export const Contact = () => {
                     required
                     className="w-full px-4 py-2 rounded-lg border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-theme-primary/50 transition-all"
                   />
-                </div>
-
-                {/* WhatsApp Number */}
-                <div>
-                  <label
-                    htmlFor="whatsapp"
-                    className="block text-sm font-medium text-foreground mb-2"
-                  >
-                    WhatsApp Number (Optional)
-                  </label>
-                  <input
-                    type="tel"
-                    id="whatsapp"
-                    name="whatsapp"
-                    value={formData.whatsapp || ""}
-                    onChange={handleChange}
-                    placeholder="+91 9876543210"
-                    className="w-full px-4 py-2 rounded-lg border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-theme-primary/50 transition-all"
-                  />
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Add your WhatsApp number to receive instant replies
-                  </p>
                 </div>
 
                 {/* Subject */}

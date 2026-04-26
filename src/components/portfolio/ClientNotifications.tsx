@@ -26,7 +26,7 @@ export const ClientNotifications = () => {
     const handleStorageChange = () => {
       const updated = getStoredClients();
       setClients(updated);
-      if (updated.length > clients.length) {
+      if (updated.length > loadedClients.length) {
         setNewCount(1); // Show notification for new submission
         setTimeout(() => setNewCount(0), 5000); // Auto-dismiss after 5 seconds
       }

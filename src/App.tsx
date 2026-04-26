@@ -22,7 +22,7 @@ const AppContent = () => {
     if (location.pathname !== "/") {
       navigate("/", { replace: true });
     }
-  }, []);
+  }, [location.pathname, navigate]);
 
   useEffect(() => {
     // Track route changes
