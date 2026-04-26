@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Users, MessageSquare, X } from "lucide-react";
-import { getStoredClients } from "@/lib/whatsappService";
 
 interface ClientData {
   id?: string;
@@ -9,6 +8,15 @@ interface ClientData {
   email: string;
   message: string;
   timestamp?: number;
+}
+
+// Get stored clients from localStorage
+function getStoredClients(): ClientData[] {
+  try {
+    return JSON.parse(localStorage.getItem("clients") ?? "[]");
+  } catch {
+    return [];
+  }
 }
 
 export const ClientNotifications = () => {
