@@ -1,8 +1,7 @@
 export const links = {
   github: "https://github.com/mayurpatil70",
   linkedin: "https://www.linkedin.com/in/mayurpatil07/",
-  instagram:
-    "https://www.instagram.com/noball_ondesk?igsh=MWk5OHNmNXdwamN6OQ%3D%3D",
+  instagram: "",
   email: "mayurthinks7@gmail.com",
   businessEmail: "noballondesk@gmail.com",
   phone: "+91 9689102662",
@@ -16,9 +15,9 @@ export const heroData = {
   title: "Full Stack Developer",
   description:
     "Passionate about building impactful products that solve real problems, scale efficiently, and perform reliably in production.",
-  status: "Currently working at Cognizant as MEAN Stack Developer",
+  status: "Currently working at Cognizant as MERN Stack Developer",
   about:
-    "I am a dedicated Full Stack Developer with 1.4+ years of professional experience in designing, developing, and maintaining scalable enterprise applications using MongoDB, Express.js, Angular, Node.js, REST APIs and Agile methodologies. Currently working at Cognizant as a MEAN Stack Developer since January 2025. I have strong expertise in backend development, responsive UI design, API integration, debugging, and database optimization. I have successfully developed projects such as a secure banking application where I implemented advanced features like JWT authentication, AES-256 encryption, and multi-factor authentication, ensuring high-level security and reliability. My ability to understand business requirements, solve complex problems, and deliver projects on time makes me a reliable choice. I am committed to maintaining clear communication, ensuring quality, and providing solutions that truly add value to your project.",
+    "I am a dedicated Full Stack Developer with 2+ years of professional experience in designing, developing, and maintaining scalable enterprise applications using MongoDB, Express.js, Angular, Node.js, REST APIs and Agile methodologies. Currently working at Cognizant as a MEAN Stack Developer since January 2025. I have strong expertise in backend development, responsive UI design, API integration, debugging, and database optimization. I have successfully developed projects such as a secure banking application where I implemented advanced features like JWT authentication, AES-256 encryption, and multi-factor authentication, ensuring high-level security and reliability. My ability to understand business requirements, solve complex problems, and deliver projects on time makes me a reliable choice. I am committed to maintaining clear communication, ensuring quality, and providing solutions that truly add value to your project.",
 };
 
 export const experienceData = [
@@ -30,15 +29,16 @@ export const experienceData = [
     tech: [
       "MongoDB",
       "Express.js",
-      "Angular",
+      "React.js",
+      "Next.js",
       "Node.js",
       "REST APIs",
       "TypeScript",
       "JWT",
     ],
     highlights: [
-      "Developed scalable enterprise-grade web applications using MEAN stack",
-      "Designed responsive and reusable UI components using Angular, HTML5, CSS3, and TypeScript",
+      "Developed scalable enterprise-grade web applications using MERN stack",
+      "Designed responsive and reusable UI components using React.js, HTML5, CSS3, and TypeScript",
       "Built and maintained scalable REST APIs for enterprise applications",
       "Implemented authentication and authorization using JWT based security mechanism",
       "Optimized MongoDB queries and improved application performance for large datasets",
@@ -99,8 +99,31 @@ export const projectsData = [
       "MySQL",
       "Google Authenticator",
     ],
-    liveDemo: "https://github.com/mayurpatil70",
+    liveDemo: "https://secure-bankapp.vercel.app",
     githubRepo: "https://github.com/mayurpatil70",
     period: "2024",
+  },
+  {
+    title: "Traco-WebApplication",
+    subtitle: "Website Visitors Traffic Tracker",
+    description: "Real-Time Visitor Tracking ",
+    icon: "🏦",
+    image: "/traco-app.png",
+    features: [
+      "Engineered a production-grade website visitor tracker leveraging a modern stack — Next.js, Node.js, MongoDB, Supabase, and Cloudflare Workers — to capture and visualize real-time traffic insights. Implemented edge computing via Cloudflare Workers for minimal performance overhead and automated notifications using Resend.",
+    ],
+    tech: [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "CloudflareWorkers",
+      "Supabase",
+      "Resend",
+    ],
+    liveDemo: "https://traco-webapp.vercel.app",
+    githubRepo: "https://github.com/mayurpatil70",
+    period: "2026",
   },
 ];

@@ -52,7 +52,7 @@ export const Education = () => {
                 </div>
                 <p className="text-muted-foreground text-sm sm:text-base">
                   Full Stack Developer skilled in building modern web
-                  applications using React, Node.js, and various other
+                  applications using React.js, Next.js, Node.js, Express.js, MongoDB, and various other
                   technologies. Passionate about creating scalable and
                   user-friendly solutions.
                 </p>

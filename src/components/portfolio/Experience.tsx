@@ -12,7 +12,7 @@ const experienceData = [
     period: "Jan 2025 – Present",
     type: "Full-time",
     highlights: [
-      "Developed scalable enterprise-grade web applications using Angular, Node.js, Express.js, and MongoDB",
+      "Developed scalable enterprise-grade web applications using React.js, Node.js, Express.js, and MongoDB",
       "Designed responsive and reusable UI components using Angular, HTML5, CSS3, and TypeScript.",
       "Built and maintained scalable REST APIs for enterprise applications and client systems.",
       "Implemented authentication and authorization using JWT based security mechanism",
@@ -25,20 +25,21 @@ const experienceData = [
       "Maintained code quality using Git version control and peer code reviews.",
     ],
   },
-  // {
-  //   id: 2,
-  //   company: "ApMoSys Technologies Pvt Ltd",
-  //   location: "Navi Mumbai, Maharashtra",
-  //   role: "Frontend Developer (Intern)",
-  //   period: "Jun 2021 – Dec 2021",
-  //   type: "Internship",
-  //   highlights: [
-  //     "Built responsive UI components using React and CSS frameworks (Tailwind/Bootstrap).",
-  //     "Implemented user authentication flows and form validations.",
-  //     "Assisted in converting Figma designs into interactive web interfaces.",
-  //     "Participated in code reviews and unit testing.",
-  //   ],
-  // },
+  {
+    id: 2,
+    company: "Creazione Software",
+    location: "Pune, Maharashtra",
+    role: "Jr. Java Software Developer (Intern)",
+    period: "Jun 2024 – Dec 2024",
+    type: "Internship",
+    highlights: [
+      "Developed scalable applications using Java, SpringBoot and MySQL",
+      "Built responsive UI components using React and CSS frameworks (Tailwind/Bootstrap).",
+      "Implemented user authentication flows and form validations.",
+      "Assisted in converting Figma designs into interactive web interfaces.",
+      "Participated in code reviews and unit testing.",
+    ],
+  },
   {
     id: 3,
     company: "Freelance",
@@ -47,7 +48,7 @@ const experienceData = [
     period: "Jan 2023 – present",
     type: "Freelance",
     highlights: [
-      "Delivered multiple client websites using HTML, CSS, JavaScript, and Angular.",
+      "Delivered multiple client websites using HTML, CSS, JavaScript, and React.js.",
       "Improved SEO and accessibility by restructuring page headings and semantic HTML.",
       "Configured and deployed sites on platforms like Render and Vercel.",
       "Provided ongoing maintenance and small feature updates.",
