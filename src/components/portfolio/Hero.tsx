@@ -23,6 +23,125 @@ import { links, heroData } from "@/data/portfolioData";
 import { ResumeViewer } from "@/components/portfolio/ResumeViewer";
 import { ThemeSettingsDialog } from "@/components/portfolio/ThemeSettingsDialog";
 
+// Animated typewriter name: "Mayur Patil"
+const AnimatedName = () => {
+  const firstName = heroData.firstName;
+  const lastName = heroData.lastName;
+  const fullText = `${firstName} ${lastName}`;
+
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [cursorVisible, setCursorVisible] = useState(true);
+
+  // Blinking cursor
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCursorVisible((v) => !v);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Smooth typewriter loop
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting && displayText.length < fullText.length) {
+      timer = setTimeout(() => {
+        setDisplayText(fullText.slice(0, displayText.length + 1));
+      }, 95);
+    } else if (!isDeleting && displayText.length === fullText.length) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 3000);
+    } else if (isDeleting && displayText.length > 0) {
+      timer = setTimeout(() => {
+        setDisplayText(fullText.slice(0, displayText.length - 1));
+      }, 45);
+    } else if (isDeleting && displayText.length === 0) {
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+      }, 600);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, fullText]);
+
+  const firstNamePart = displayText.slice(0, firstName.length);
+  const hasSpace = displayText.length > firstName.length;
+  const lastNamePart =
+    displayText.length > firstName.length + 1
+      ? displayText.slice(firstName.length + 1)
+      : "";
+
+  return (
+    <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight min-h-[3rem] sm:min-h-[3.75rem] lg:min-h-[4.5rem] xl:min-h-[5.25rem] flex items-center justify-center lg:justify-start">
+      <span>{firstNamePart}</span>
+      {hasSpace && <span>&nbsp;</span>}
+      {lastNamePart && (
+        <span className="bg-gradient-to-r from-theme-primary to-theme-secondary bg-clip-text text-transparent">
+          {lastNamePart}
+        </span>
+      )}
+      <span
+        className={`ml-1 inline-block w-[3px] sm:w-[4px] h-8 sm:h-10 lg:h-12 xl:h-14 bg-theme-primary rounded-full transition-opacity duration-150 ${
+          cursorVisible ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </h1>
+  );
+};
+
+// Animated typewriter subtitle: "Full Stack Developer"
+const TypewriterSubtitle = ({ text }: { text: string }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [cursorVisible, setCursorVisible] = useState(true);
+
+  // Blinking cursor
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCursorVisible((v) => !v);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Smooth typewriter loop
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting && displayText.length < text.length) {
+      timer = setTimeout(() => {
+        setDisplayText(text.slice(0, displayText.length + 1));
+      }, 85);
+    } else if (!isDeleting && displayText.length === text.length) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2400);
+    } else if (isDeleting && displayText.length > 0) {
+      timer = setTimeout(() => {
+        setDisplayText(text.slice(0, displayText.length - 1));
+      }, 40);
+    } else if (isDeleting && displayText.length === 0) {
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+      }, 600);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, text]);
+
+  return (
+    <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground font-medium min-h-[2rem] flex items-center justify-center lg:justify-start">
+      <span className="text-foreground">{displayText}</span>
+      <span
+        className={`ml-1 inline-block w-[2px] h-5 sm:h-6 bg-theme-primary rounded-full transition-opacity duration-150 ${
+          cursorVisible ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </p>
+  );
+};
+
 export const Hero = () => {
   const [isCopied, setIsCopied] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -87,25 +206,8 @@ export const Hero = () => {
               className="space-y-6 lg:space-y-8 order-2 lg:order-1 text-center lg:text-left"
             >
               <div className="space-y-3 lg:space-y-4">
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                  className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground"
-                >
-                  {heroData.firstName}{" "}
-                  <span className="bg-gradient-to-r from-theme-primary to-theme-secondary bg-clip-text text-transparent">
-                    {heroData.lastName}
-                  </span>
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-lg sm:text-xl lg:text-2xl text-muted-foreground font-medium"
-                >
-                  {heroData.title}
-                </motion.p>
+                <AnimatedName />
+                <TypewriterSubtitle text={heroData.title} />
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
