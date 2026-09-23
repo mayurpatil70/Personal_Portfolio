@@ -14,7 +14,7 @@ const skillCategories = [
       },
       {
         name: "NestJS",
-        logo: "https://raw.githubusercontent.com/nestjs/nest/master/media/nest.svg",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg",
       },
       {
         name: "TypeScript",
@@ -33,6 +33,7 @@ const skillCategories = [
       },
       { name: "REST API", logo: "🔗" },
       { name: "Webhooks", logo: "🪝" },
+      { name: "Socket.io", logo: "🗄️" },
     ],
   },
   {
@@ -84,6 +85,7 @@ const skillCategories = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
       },
       { name: "OAuth 2.0", logo: "🔐" },
+      { name: "JWT", logo: "🔐" },
       {
         name: "Docker",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
@@ -104,13 +106,13 @@ const skillCategories = [
     ],
   },
   {
-    category: "Concepts & Other",
+    category: "AI & Automation",
     skills: [
-      { name: "IMAP/SMTP", logo: "📧" },
-      { name: "LLM API Integration", logo: "🤖" },
-      { name: "Vector DB", logo: "🗄️" },
-      { name: "Cron Jobs", logo: "⏰" },
-      { name: "AJAX", logo: "🔄" },
+      // { name: "IMAP/SMTP", logo: "📧" },
+      // { name: "LLM API Integration", logo: "🤖" },
+      // { name: "Vector DB", logo: "🗄️" },
+      // { name: "Cron Jobs", logo: "⏰" },
+      // { name: "AJAX", logo: "🔄" },
       { name: "AI Agent", logo: "🤖" },
       { name: "AI Automation", logo: "⚙️" },
       { name: "AI Voice Assistance", logo: "🎤" },
